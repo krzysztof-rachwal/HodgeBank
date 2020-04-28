@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<header th:fragment="header">
+    <img src="../static/hodgelogo.JFIF" th:src="@{hodgeLogo.JFIF}" alt="Logo">
+
+    <div class="navsection">
+        <nav>
+            <ul class="navcontainer">
+                <li><a class="navsectionlink" href="viewEvents.html" th:href="@{viewEvents}">Home</a></li>
+                <li><a class="navsectionlink"  th:href="@{CreateEventPage}">Create Event</a></li>
+                <li><a class="navsectionlink" th:if="${session.SESSION_USERNAME != null}" href="/logout">Log Out</a></li>
+            </ul>
+        </nav>
+    </div>
+<!--    <nav>-->
+<!--        <a th:if="${session.SESSION_USERNAME == null}" href="/register">Register</a>-->
+<!--        <a th:if="${session.SESSION_USERNAME == null}" href="/login">Login</a>-->
+<!--        <a th:if="${session.SESSION_USERNAME != null}" href="/viewEvents">User Area</a>-->
+<!--        <a th:if="${session.SESSION_USERNAME != null}" href="/logout">Logout</a>-->
+<!--    </nav>-->
+</header>
+
+</body>
+</html>

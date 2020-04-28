@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Return Attendees</title>
+    <link href="../static/CreateEventPage.css" th:href="@{CreateEventPage.css}" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <header th:replace="baseTemplate.html :: header">
+        <img src="../static/hodgelogo.JFIF" alt = "Logo">
+    </header>
+</header>
+<section id="returnattendees">
+
+    <section th:each="event : ${myEvent}">
+        <h1><span th:text="${event.eventName}"></span> Attendees</h1>
+
+
+        <table th:if="${event.DReq == 1 && event.teamBased ==0}" id="attendeetable">
+            <tr>
+                <th>Attendee</th>
+                <th>Dietery Requirements</th>
+            </tr>
+            <tr th:each="people : ${myPeople}">
+                <td th:text = "${people.name}"></td>
+                <td th:if="${people.dietReq != null}" th:text = "${people.dietReq}"></td>
+                <td th:if="${people.dietReq == null}" th:text ="none"></td>
+            </tr>
+        </table>
+
+
+        <table th:if="${event.DReq == 0 && event.teamBased == 0}" id="attendeetable">
+            <tr>
+                <th>Attendee</th>
+                <th>Dietery Requirements</th>
+            </tr>
+            <tr th:each="people : ${myPeople}">
+                <td th:text = "${people.name}"></td>
+                <td>Not needed for this event</td>
+            </tr>
+        </table>
+
+        <table th:if="${event.teamBased == 1}" id="attendeetable">
+            <tr>
+                <th>Team Captain</th>
+                <th>Team Members</th>
+            </tr>
+            <tr th:each="people : ${myPeople}">
+                <td th:text = "${people.name}"></td>
+                <td th:text = "${people.teamMembers}"></td>
+            </tr>
+        </table>
+
+    </section>
+
+    <!--<input class="submitbutton" type="submit" value="Send Email Update">-->
+
+</section>
+
+</body>
+</html>

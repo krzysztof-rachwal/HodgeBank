@@ -1,0 +1,355 @@
+
+
+body{
+    margin: 0;
+    font-family: Lato, sans-serif;
+  }
+
+#loginmain p{
+   width: 50%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#loginForm, #registerForm{
+    width: 60%;
+    margin: 0 auto;
+}
+
+#loginForm input, #registerForm input {
+    width: 100%;
+}
+
+.createquestion {
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+  .navcontainer {
+    display:flex;
+  }
+  
+  .navsection{
+    padding-right: 1rem;
+  }
+.navsectionTest{
+    padding-right: 1rem;
+}
+  
+  header {
+       background-color: #223B47;
+       color: white;
+       height:5rem;
+       align-items: center;
+       display: flex !important;
+       justify-content: flex-end !important;
+
+     }
+  
+  .navsectionlink {
+    padding: 1rem;
+  color: white;
+      text-decoration: none !important;
+  }
+  
+  .navsectionlink:hover {
+    background: white;
+    color: #223B47 !important;
+  }
+
+  .navsectionlink:visited{
+      color: white;
+  }
+  
+  li {
+    list-style: none;
+  }
+  
+  img {
+    border-radius: 50%;
+      left: 1rem;
+      position: absolute;
+      top:1rem;
+      border: 0.2rem solid white !important;
+      height: 8rem;
+  
+  }
+  
+  .main {
+    text-align: center;
+
+  }
+  
+  input, textarea {
+    width:60%;
+    height: 2rem;
+    border: 0.1rem solid #223B47;
+    margin: 1.5rem;
+    padding: 1px
+  }
+
+  #sub{
+      background-color: #ffcB05;
+      font-weight: bold;
+  }
+
+#sub:hover {
+    background-color: #B89100;
+}
+
+  #dietradio{
+      display: flex;
+  }
+.smallradio {
+    width: 25%;
+    height: 1.3rem;
+}
+
+  
+  #eventdescription {
+     vertical-align: middle;
+     height: 4rem;
+  }
+  
+  #radioinput {
+
+      display: flex !important;
+  }
+
+  .radiocontainer{
+      display: flex !important;
+      width: 40%;
+      margin: 0 auto;
+      font-size: 1rem;
+      justify-content: center;
+  }
+
+  #dietradio{
+      margin-top: 1px;
+
+  }
+
+  .teamchoice{
+width:50%;
+  }
+  
+  .submitbutton{
+    width:30%;
+    background-color: #ffcB05;
+    color: #223B47;
+    height: 3rem;
+      border: none;
+    font-weight: bold;
+  }
+  
+  .submitbutton:hover {
+    background-color: #B89100;
+  }
+/*styling for save button in create event form.*/
+#save{
+    margin-left: 2rem;
+    width:30%;
+    background-color: #ffcB05;
+    color: #223B47;
+    height: 3rem;
+    border: none;
+    font-weight: bold;
+}
+#save:hover {
+    background-color: #B89100;
+}
+  
+  #eventtypeform {
+      padding-top: 1rem;
+      display: none;
+      width: 60%;
+      margin: 0 auto;
+      text-align: center;
+}
+
+  .teamcontainer{
+      display: flex;
+      justify-content: space-evenly;
+      width: 60%;
+      margin: 0 auto;
+      padding-bottom: 1rem;
+  }
+
+  .createcontainer{
+      text-align: center;
+
+  }
+
+  #teaminput{
+      width: 2rem;
+  }
+
+#returnattendees {
+    padding: 2rem;
+    text-align: center;
+    justify-content: center;
+
+}
+
+#eventtable{
+    margin: 0rem auto 2rem auto;
+}
+
+#attendeetable {
+    margin: 0 auto;
+}
+
+
+table {
+    font-family: sans-serif;
+    border-collapse: collapse;
+    padding: 4rem;
+    text-align: center;
+    width: 55%
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(odd) {
+    background-color: #dddddd;
+}
+
+
+
+
+.eventDiv{
+
+    width: 50%;
+    text-align: center;
+    display: inline-block;
+
+}
+.eventSection{
+
+    border: solid black 0.2em;
+    padding: 1em;
+    margin-bottom: 2em;
+}
+.sBar {
+    overflow: hidden;
+    background-color: #e9e9e9;
+}
+.sBar a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.sBar input[type=text] {
+    padding: 6px;
+    border: none;
+    font-size: 17px;
+}
+
+
+  #eventtitle {
+      margin: 0;
+      padding: 1.5rem;
+      background-color: #c3c3c3;
+  }
+  /* added on 16/11/2019 */
+#myBtn{
+    width:30%;
+    background-color: #ffcB05;
+    color: #223B47;
+    height: 3rem;
+    border: none;
+    font-weight: bold;
+}
+
+#myBtn:hover {
+    background-color: #B89100;
+}
+  
+  /* The Modal (background) */
+  .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 60%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close, .close2 {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus, .close2:hover, .close2:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .row{
+      display: flex;
+      -ms-flex-wrap: wrap;
+      width: 80%;
+      margin: 0 auto !important;
+      justify-content: center;
+  }
+
+  #dietReqForm {
+      display: none;
+  }
+
+  #dietReq {
+      vertical-align: middle;
+      width:20rem;
+      height: 10rem;
+  }
+
+  #teammembers {
+    vertical-align: middle;
+    width:20rem;
+    height: 10rem;
+  }
+
+  #showevent {
+      margin-top: 1.5rem;
+  }
+
+  .searchsubmit{
+      background-color: #ffcB05;
+      color: #223B47;
+      font-weight: bold;
+      border: none;
+      padding: 0.1rem;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      margin-right: 0.5rem;
+  }
+
+.searchsubmit:hover {
+    background-color: #B89100;
+}

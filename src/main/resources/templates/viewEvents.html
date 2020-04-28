@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="../static/CreateEventPage.css" th:href="@{CreateEventPage.css}" rel="stylesheet">
+    <title>Events Page</title>
+</head>
+
+<body>
+
+<header th:replace="baseTemplate.html :: header">
+    <img src="../static/hodgelogo.JFIF" alt = "Logo">
+</header>
+
+<div class="main">
+    <h1 id="eventtitle">Events</h1>
+    <!--<div class="sBar">
+        <input type="text" placeholder="Search..">
+    </div>-->
+
+    <br/>
+    <form>
+        <button class="searchsubmit" type="submit" th:name="selectSQL" value="1">All Upcoming Events</button>
+        <button class="searchsubmit" type="submit" th:name="selectSQL" value="2">My Upcoming Events</button>
+        <button class="searchsubmit" type="submit" th:name="selectSQL" value="3">All Previous Events</button>
+        <button class="searchsubmit" type="submit" th:name="selectSQL" value="4">My Previous Events</button>
+    </form>
+
+    <div class="eventDiv">
+        <section class="eventSection" th:each="event : ${myEvent}">
+            <h2 th:text="${event.eventName}"></h2>
+            <p>Date: <span th:text="${event.Date}"></span></p>
+            <p>Location:<span th:text="${event.Location}"></span></p>
+            <p>Organiser:<span th:text="${event.organiserName}"></span></p>
+            <!--<a href="/eventPage.html" th:href="@{eventPage}">Link to Event</a>-->
+            <form method="GET" action="/viewSpecificEvent">
+                <button class="submitbutton" name="eventId" type="submit" th:value="${event.eventID}">See more details</button><br><br>
+
+            </form>
+        </section>
+    </div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Event Page</title>
+
+    <link href="../static/CreateEventPage.css" th:href="@{CreateEventPage.css}" rel="stylesheet">
+    <script src="../static/CreateEventPage.js" th:src="@{CreateEventPage.js}"></script>
+    <!--Making static temporariliy...
+    <link href="CreateEventPage.css" th:href="@{CreateEventPage.css}" rel="stylesheet">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body >
+
+<!-- mkaing static temporarily
+    <header th:replace="/baseTemplate :: header">
+        <img src="hodgelogo.JFIF" alt = "Logo">
+    </header>-->
+
+<header th:replace="baseTemplate :: header">
+    <img src="../static/hodgelogo.JFIF" alt="hodgelogo">
+
+    </header>
+
+    <div class="main">
+
+        <section id="showevent" th:each="event : ${myEvent}">
+
+            <h1><span th:text="${event.eventName}"></span></h1>
+            <table class="table" id="eventtable">
+                <tr>
+                    <th>Date</th>
+                </tr>
+                <tr>
+                    <td th:text="${event.date}"></td>
+                </tr>
+                <tr>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                    <td th:text="${event.time}"></td>
+                </tr>
+
+                <tr>
+                    <th>Location</th>
+                </tr>
+                <tr>
+                    <td th:text="${event.location}"></td>
+                </tr>
+                <tr>
+                    <th>Organiser</th>
+                </tr>
+                <tr>
+                    <td th:text="${event.organiserName}"></td>
+                </tr>
+
+                <tr>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td th:text="${event.description}"></td>
+                </tr><br>
+            </table>
+
+<!--SIGN UP MODAL------------------------------------------------------------->
+        <!-- Trigger/Open The Modal -->
+    <button id="myBtn">Sign Up</button>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <br>
+                    <br>
+                    <h1> You are signing up to the <span th:text="${event.eventName}"></span> Event</h1>
+
+                    <form name="signupform" method="PUT" action="/signUp">
+
+                        <!--Hidden form elements to send constant data. peopleId and eventId will need to be dynamic eventually.-->
+
+
+                        <input id="eventId" name="eventId" type="hidden" th:value="${event.eventID}" /><br>
+                        <input id="statusId" name="statusId" type="hidden" value="1" /><br>
+
+                        <!--End of hidden input-->
+                        <div th:if="${event.DReq == 1}">
+                            <p>Do you have any dietary requirements?</p>
+                            <br>
+                            <br>
+                            <div class="radiocontainer">
+                                <input id="dietradio" class="radioinput" type="radio" name="dietReqInput" value="Yes"
+                                    onclick="showDietReq()"> Yes
+                                <input id="dietradio" class="radioinput" type="radio" name="dietReqInput" value="No"
+                                    onclick="hideDietReq()"> No
+                            </div>
+
+                            <div id="dietReqForm">
+                                <p>Enter your requirements below:</p>
+                                <textarea id="dietReq" name="dietReq"></textarea>
+                            </div>
+                        </div>
+                        <div th:if="${event.teamBased==1}">
+                            <p>List your team mates below (up to <span th:text="${event.teamSize}"></span> people)</p>
+                            <div id="TeamMembersForm">
+                                <textarea id="teamMembers" name="teamMembers"></textarea>
+                            </div>
+                        </div>
+                        <input class="submitbutton" type="submit" value="Sign Me Up!"><br><br><br>
+                    </form>
+                </div>
+
+    </div><br><br>
+
+            <!--End of SIgn Up Modal----------------------------------------------->
+
+            <!--View Attendees Button and Modal------------------------------------->
+
+    <div id="searchbyevent" th:if="${event.organiserEmail == session.SESSION_USERNAME}">
+        <form method="GET" action="/searchMyEvents">
+            <button class="submitbutton" name="eventId" type="submit" th:value="${event.eventID}">View My Attendees</button><br><br>
+
+            </form>
+        </div>
+
+            <!--End of View Attendees button and Modal------------------------>
+
+            <!--Cancel Attending Button and Modal------------------------------>
+
+    <button class="submitbutton" id="cancelBtn-one">Cancel Attending</button>
+
+        <div id="myModal-two" class="modal">
+            <div class="modal-content">
+
+                <span class="close2">&times;</span>
+
+                <h1>Are you sure you wish to cancel attending the <span th:text="${event.eventName}"></span> event?</h1>
+
+                <form method="post" th:action="@{/cancelAttending(eventId=${event.eventID})}">
+                    <button id="cancelBtn-two" class="submitbutton" type="submit">Yes, I'm sure</button>
+                    <br><br>
+                </form>
+
+            </div>
+
+        </div>
+
+            <!--ENd of Cancel Attending Event Button and Modal---------------------------------->
+<br/>
+<br/>
+
+            <!--Delete Event Button and Modal------------------------------------------------>
+<div class="deleteeventsection" th:if="${event.organiserEmail == session.SESSION_USERNAME}">
+    <button class="submitbutton" onclick="deleteEvent()">Delete Event</button>
+    <div id="myModalTwo" class="modal">
+        <div class="modal-content">
+            <br>
+            <br>
+            <h1> Are you sure you want to cancel the <span th:text="${event.eventName}"></span> Event?</h1>
+
+            <form method="post" th:action="@{/delete(eventId=${event.eventID})}">
+                <button class="submitbutton" type="submit">Delete Event</button><br><br>
+            </form>
+            <button class="submitbutton" onclick="returnToEvent()">No, Take Me Back</button><br><br>
+        </div>
+    </div><br>
+</div>
+            <!--End of delete event button and modal--------------------------------------->
+<br><br>
+        </section>
+
+
+
+    </div>
+
+</div>
+</div>
+
+<script>
+    function deleteEvent() {
+        document.getElementById('myModalTwo').style.display = "block";
+    }
+
+    function returnToEvent(){
+        document.getElementById("myModalTwo").style.display = "none";
+    }
+</script>
+
+<!--<script type="text/javascript">-->
+<!--    function getSessionEmail(){-->
+<!--        var sEmail = '<%= session.getAttribute("SESSION_USERNAME")%>';-->
+<!--        alert(sEmail);-->
+<!--    }-->
+<!--</script>-->
+
+<script src="../static/CreateEventPage.js" th:src="@{CreateEventPage.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Event Page</title>
+
+    <link href="CreateEventPage.css" rel="stylesheet">
+    <script type="text/javascript" src="CreateEventPage.js"></script>
+    <!--Making static temporariliy...
+    <link href="CreateEventPage.css" th:href="@{CreateEventPage.css}" rel="stylesheet">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+<!-- mkaing static temporarily
+    <header th:replace="/baseTemplate :: header">
+        <img src="hodgelogo.JFIF" alt = "Logo">
+    </header>-->
+
+<header>
+    <img src="hodgelogo.JFIF" alt="hodgelogo">
+
+    <div class="navsection">
+        <nav>
+            <ul class="navcontainer">
+                <li><a class="navsectionlink" href="viewEvents.html">Home</a></li>
+                <li><a class="navsectionlink" href="CreateEventPage.html">Create Event</a></li>
+                <li><a class="navsectionlink">Log Out</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="main">
+    <h1>Hodge Christmas Party</h1>
+
+
+    <h3>Date</h3>
+    <p>21st December 2019</p>
+
+    <h3>Time</h3>
+    <p>19:00</p>
+
+    <h3>Location</h3>
+    <p>Hilton Hotel, Cardiff</p>
+
+
+    <h3>Organiser</h3>
+    <p>Joshua Elsmore</p>
+
+    <h3>Description</h3>
+    <p>Dress Code: Black Tie</p>
+    <p>Schedule: Welcome Drink 7pm - 8pm followed by three course meal. DJ until 2am. </p><br>
+
+
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn">Sign Up</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form name="signupform" method="PUT" action="/signUp">
+
+                <!--Hidden form elements to send constant data. peopleId and eventId will need to be dynamic eventually.-->
+                <div>
+                    <input id="peopleId" name="peopleId" type="hidden" value="1"/><br>
+                </div>
+                <div>
+                    <input id="eventId" name="eventId" type="hidden" value="1"/><br>
+                </div>
+                <div>
+                    <input id="statusId" name="statusId" type="hidden" value="1"/><br>
+                </div>
+                <!--End of hidden input-->
+
+                <p>Do you have any dietary requirements?</p>
+                <input class="radioinput" type="radio" name="dietReqInput" value="Yes"
+                       onclick="showDietReq()"> Yes
+                <input class="radioinput" type="radio" name="dietReqInput" value="No"
+                       onclick="hideDietReq()"> No <br>
+
+                <div id="dietReqForm">
+                    <label for="dietReq">Enter Your Requirements:</label>
+                    <textarea id="dietReq" name="dietReq"></textarea>
+                </div>
+                <input class="submitbutton" type="submit" value="Submit"><br><br><br>
+            </form>
+        </div>
+
+    </div><br><br>
+
+    <div id="searchbyevent">
+        <form method="GET" action="/searchMyEvents">
+            <button class="submitbutton" name="eventId" type="submit" value="1">View My Attendees</button><br><br>
+
+        </form>
+    </div>
+</div>
+
+
+
+
+<script src="CreateEventPage.js"></script>
+
+</body>
+
+</html>

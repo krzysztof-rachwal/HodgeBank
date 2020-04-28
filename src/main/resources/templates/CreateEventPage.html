@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="../static/CreateEventPage.css" th:href="@{CreateEventPage.css}" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../static/bootstrap/css/bootstrap.min.css" th:href="@{bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- jQuery UI CSS -->
+    <link href="../static/jquery-ui/jquery-ui.css" th:href="@{jquery-ui/jquery-ui.css}" type="text/css" rel="stylesheet">
+    <!-- Bootstrap styling for Typeahead -->
+    <link href="../static/inputTags/dist/css/tokenfield-typeahead.css" th:href="@{inputTags/dist/css/tokenfield-typeahead.css}" type="text/css" rel="stylesheet">
+    <!-- Tokenfield CSS -->
+    <link href="../static/inputTags/dist/css/bootstrap-tokenfield.css" th:href="@{inputTags/dist/css/bootstrap-tokenfield.css}" type="text/css" rel="stylesheet">
+    <!-- Docs CSS -->
+    <link href="../static/inputTags/docs-assets/css/pygments-manni.css" th:href="@{inputTags/docs-assets/css/pygments-manni.css}" type="text/css" rel="stylesheet">
+    <link href="../static/inputTags/docs-assets/css/docs.css" th:href="@{inputTags/docs-assets/css/docs.css}" type="text/css" rel="stylesheet">
+
+    <style>
+        .alert {
+            width: 80vw;
+            margin: 2rem auto;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.25rem;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+<header th:replace="baseTemplate.html :: header"></header>
+<!--<header th:replace="baseTemplate :: header">-->
+<!--    <img src="../static/hodgelogo.JFIF">-->
+
+<!--</header>-->
+
+        <br><br>
+        <center><h1>Create a New Event</h1></center>
+<div class="container">
+        <div class="alert"></div>
+            <form id="createEventForm" class="form-horizontal" action="/eventCreation" method="post" th:object="${createEvent}"> <!---->
+
+                <label for="eventTitle">Event Title</label>
+                <input class="form-control" type="text" id="eventTitle" name="eventTitle" placeholder="Event title.."><br> <!--th:field="*{eventTitle}"-->
+
+                <label for="eventDesc">Description</label>
+                <textarea class="form-control" id="eventDesc" name="eventDesc" placeholder="Event description..." ></textarea> <!-- th:field="*{eventDesc}"-->
+                <br>
+                    <label for="location">Location</label>
+                    <textarea class="form-control" id="location" name="location" placeholder="Event location..." ></textarea> <!--th:field="*{location}"-->
+                    <br>
+
+                <label for="eventTime">Event Time</label>
+                <input class="form-control" type="time" id="eventTime" name="eventTime" placeholder="Event Time" ><br> <!--th:field="*{eventTime}"-->
+
+                <label for="eventDate">Event Date</label>
+                <input class="form-control" type="date" id="eventDate" name="eventDate" placeholder="Event Date" ><br> <!--th:field="*{eventDate}"-->
+
+                <label for="tokenfield-2">Invite</label>
+                <input type="text" class="form-control" id="tokenfield-2" name="tokenField" placeholder="Type email address and hit enter" />
+
+                <br><br>
+
+
+                    <p class="createquestion"><strong>Are dietery requirements needed?</strong></p><br>
+                    <div class="radiocontainer" for="dietaryReq">
+               <input class="smallradio" id="dietaryReqTrue" type="radio" name="dietaryReq" value="1"/>Yes
+               <input class="smallradio" id="dietaryReqFalse" type="radio" name="dietaryReq" value="0"/>No
+                    </div>
+                    <br>
+               <br>
+                    <p class="createquestion"><strong>Is this a Team Event?</strong></p><br>
+                    <div class="radiocontainer" for="teamBased">
+                <input class ="smallradio" id="TeamBasedTrue" type="radio" name="teamBased" value="1" onclick="showTeamEventForm()"/>Yes
+                <input class="smallradio" id="TeamBasedFalse" type="radio" name="teamBased" value="0" onclick="hideTeamEventForm()"/>No
+                    </div><br>
+
+                    <div id="eventtypeform">
+                <label for="teaminput">Maximum number of people in a team</label>
+                <input type="text" id="teaminput" name="teamSize" value="0"><br><br>
+                    </div>
+
+                <input id="csrf" type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                <div class="row">
+                <input class="submitbutton" type="submit" name="subbtn" value="Submit"  /><br><!--onclick="getInvited()"-->
+                <button id="save">Save</button>
+                </div>
+            </form>
+    </div>
+
+<br>
+
+<!--<script>-->
+<!--    //Function to retrieve all email addresses of invited people-->
+<!--    function getInvited() {-->
+
+<!--        var invited = $('#tokenfield-2').tokenfield('getTokensList');-->
+<!--        var invitedJSON = JSON.stringify(invited);-->
+<!--        //all email addresses entered are stored in the above String var (comma separated)-->
+
+<!--        $.ajax({-->
+<!--            type: "GET",-->
+<!--            contentType: 'application/json; charset=utf-8',-->
+<!--            dataType: 'json',-->
+<!--            url: "/invite",-->
+<!--            data: invitedJSON, // assignment of the variable-->
+<!--            success: function (result) {-->
+<!--                console.log("sucess");-->
+<!--                console.log(result);-->
+<!--            },-->
+<!--            failure: function (r) {-->
+<!--                console.log("failed");-->
+<!--                console.log(r);-->
+<!--            }-->
+<!--        });-->
+<!--    }-->
+<!--</script>-->
+
+<script src="../static/CreateEventPage.js" th:src="@{CreateEventPage.js}"></script>
+<script src="../static/saveform.js.js" th:src="@{saveform.js}"></script> <!--Script for save as a draft -->
+<!--Script for email adress tokens -->
+<script type="text/javascript" src="../static/jQuery.js" th:src="@{jQuery.js}"></script>
+<script type="text/javascript" src="../static/jquery-ui/jquery-ui.js" th:src="@{jquery-ui/jquery-ui.js}"></script>
+<script type="text/javascript" src="../static/inputTags/dist/bootstrap-tokenfield.js" th:src="@{inputTags/dist/bootstrap-tokenfield.js}" charset="UTF-8"></script>
+<script type="text/javascript" src="../static/inputTags/docs-assets/js/scrollspy.js" th:src="@{inputTags/docs-assets/js/scrollspy.js}" charset="UTF-8"></script>
+<script type="text/javascript" src="../static/inputTags/docs-assets/js/affix.js" th:src="@{inputTags/docs-assets/js/affix.js}" charset="UTF-8"></script>
+<script type="text/javascript" src="../static/inputTags/docs-assets/js/typeahead.bundle.min.js" th:src="@{inputTags/docs-assets/js/typeahead.bundle.min.js}" charset="UTF-8"></script>
+<script type="text/javascript" src="../static/inputTags/docs-assets/js/docs.min.js" th:src="@{inputTags/docs-assets/js/docs.min.js}" charset="UTF-8"></script><!--This file contains values for dropdown list (department/team names: HR, Finance, IT, etc.)-->
+
+</body>
+</html>

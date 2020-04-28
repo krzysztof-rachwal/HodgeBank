@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org">
+    <meta charset="utf-8">
+    <title>Event Page</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <header>
+        <img src="hodgelogo.JFIF" alt="logo" />
+
+        <div class="navsection">
+            <nav>
+                <ul class="navcontainer">
+                    <li><a class="navsectionlink">Home</a></li>
+                    <li><a class="navsectionlink">Create Event</a></li>
+                    <li><a class="navsectionlink">Log In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="main">
+        <h1>Event Name</h1>
+
+
+
+            <h3>Date</h3>
+            <p>DateTime</p>
+
+            <h3>Location</h3>
+
+            <p><a href="https://www.google.com/maps/place/National+Software+Academy/@51.4710188,-3.1410048,10.29z/data=!4m5!3m4!1s0x0:0x684c1227f14b4a15!8m2!3d51.5896561!4d-2.9982376"
+                    target="_blank">
+                    National Software Academy</a></p>
+
+            <h3>Organiser</h3>
+            <p>Name of Orginiser</p>
+            <h3>Description</h3>
+
+            <p>Lorem ipsum dolor sit amet...</p>
+
+            <form>
+                <!-- Trigger/Open The Modal -->
+                <input id="myBtn" class="radioinput" type="radio" name="eventtype" value="team"
+                    onclick="hideTeamEventForm1()"> Going
+                <input class="radioinput" type="radio" name="eventtype" value="individual"
+                    onclick="hideTeamEventForm()">Not Going
+
+            </form>
+            <div id="eventtypeform">
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+                    <div class="modal-content container">
+                        <span class="close">&times;</span>
+                        <p>Do you have any dietary requirements?</p>
+
+                        <form>
+                            <input class="radioinput" type="radio" name="eventtype" value="team"
+                                onclick="showTeamEventForm1()"> Yes
+                            <input class="radioinput" type="radio" name="eventtype" value="individual"
+                                onclick="hideTeamEventForm1()"> No
+                        </form>
+                        <div id="eventtypeform1">
+
+
+                            <form><textarea id="dietary" name="dietary"></textarea></form>
+                        </div>
+                        <input class="submitbutton" type="submit" value="Submit"><br>
+                    </div>
+                </div>
+            </div>
+
+            <script src="CreateEventPage.js"></script>
+</div>
+
+</body>
+
+</html>

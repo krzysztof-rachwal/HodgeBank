@@ -1,0 +1,238 @@
+
+
+body{
+    margin: 0;
+    font-family: Lato, sans-serif;
+}
+
+.navcontainer {
+    display:flex;
+}
+
+.navsection{
+    padding-right: 1rem;
+}
+
+header {
+    background-color: #223B47;
+    color: white;
+    height:5rem;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.navsectionlink {
+    padding: 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+.navsectionlink:hover {
+    background: white;
+    color: #223B47 !important;
+}
+
+.navsectionlink:visited{
+    color: white;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    border-radius: 50%;
+    left: 1rem;
+    position: absolute;
+    top:1rem;
+    border: 0.2rem solid white;
+    height: 8rem;
+
+}
+
+.main {
+    text-align: center;
+
+}
+
+input, textarea {
+    width:60%;
+    height: 2rem;
+    border: 0.1rem solid #223B47;
+    margin: 1.5rem;
+    padding: 1px
+}
+
+#eventdescription {
+    vertical-align: middle;
+    height: 4rem;
+}
+
+.radioinput {
+    width:1rem;
+    vertical-align: middle;
+}
+
+
+.submitbutton{
+    width:30%;
+    background-color: #ffcB05;
+    color: #223B47;
+    height: 3rem;
+    border: none;
+    font-weight: bold;
+}
+
+.submitbutton:hover {
+    background-color: #B89100;
+}
+
+
+#eventtypeform {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+#returnattendees {
+    padding: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+table {
+    font-family: sans-serif;
+    border-collapse: collapse;
+    padding: 4rem;
+    text-align: center;
+    width: 55%
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+#attendeetable{
+    margin: 2rem;
+}
+
+
+#teaminput {
+    width: 2rem;
+}
+.eventDiv{
+
+    width: 50%;
+    text-align: center;
+    display: inline-block;
+
+}
+.eventSection{
+
+    border: solid black 0.2em;
+    padding: 1em;
+    margin-bottom: 2em;
+}
+.sBar {
+    overflow: hidden;
+    background-color: #e9e9e9;
+}
+.sBar a {
+    float: left;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.sBar input[type=text] {
+    padding: 6px;
+    border: none;
+    font-size: 17px;
+}
+
+
+#teaminput {
+    width:2rem;
+}
+
+
+#eventtitle {
+    margin: 0;
+    padding: 1.5rem;
+    background-color: #c3c3c3;
+}
+/* added on 16/11/2019 */
+#myBtn{
+    width:30%;
+    background-color: #ffcB05;
+    color: #223B47;
+    height: 3rem;
+    border: none;
+    font-weight: bold;
+}
+
+#myBtn:hover {
+    background-color: #B89100;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 60%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#dietReqForm {
+    display: none;
+}
+
+#dietReq {
+    vertical-align: middle;
+    width:20rem;
+    height: 10rem;
+}

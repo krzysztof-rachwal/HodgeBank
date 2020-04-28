@@ -1,0 +1,3 @@
+insert into BookingStatus(PeopleId, eventId, statusId) 
+select People.PeopleId, Events.EventId, 3 from People, Events
+where Email = 'RachwalK@cardiff.ac.uk' and EventId = 25;
